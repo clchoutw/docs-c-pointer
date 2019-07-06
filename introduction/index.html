@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>Introduction - Docs</title>
+        <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+        <script src="../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../js/bootstrap-3.0.3.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <div class="container">
+
+                <!-- Collapsed navigation -->
+                <div class="navbar-header">
+                    <!-- Expander button -->
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="..">Docs</a>
+                </div>
+
+                <!-- Expanded navigation -->
+                <div class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li >
+                                <a href="..">Home</a>
+                            </li>
+                            <li class="active">
+                                <a href="./">Introduction</a>
+                            </li>
+                            <li >
+                                <a href="../visualization/">Visualization</a>
+                            </li>
+                            <li >
+                                <a href="../workflow/">Workflow</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li >
+                                <a rel="next" href="..">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li >
+                                <a rel="prev" href="../visualization/">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#goal-of-the-docs">Goal of the Docs</a></li>
+        <li class="main "><a href="#target-of-a-pointer">Target of a Pointer</a></li>
+        <li class="main "><a href="#dimensional-analysis">Dimensional Analysis</a></li>
+            <li><a href="#description">Description</a></li>
+            <li><a href="#examples">Examples</a></li>
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
+
+<h1 id="goal-of-the-docs">Goal of the Docs</h1>
+<p>The pointer in C is powerful but confusing. We can understand pointer better if we
+think it logically and use it concisely. This document is trying to
+bridge the gap between logic thinking and concise usage.</p>
+<h1 id="target-of-a-pointer">Target of a Pointer</h1>
+<p>The target of a pointer could be NULL, a normal variable, a pointer variable, a function, an array, a structure, or a string.
+The target must be defined first, assign its address to a pointer,
+then use the pointer to indirectly access the target.</p>
+<h1 id="dimensional-analysis">Dimensional Analysis</h1>
+<p>Pointers are used to store memory address. 
+Dereferencing pointers can access memory content including data, address, and code.</p>
+<h3 id="description">Description</h3>
+<h4 id="memory-address-and-content">Memory Address and Content</h4>
+<pre><code>int v; // v is an integer variable
+int a[5]; // a[] is an array with 5 integer variables a[0], a[1], ..., a[4]
+int *p; // p is an integer pointer
+int f(); // f() is a function which returns an integer
+</code></pre>
+
+<ul>
+<li>
+<p>Memory Address </p>
+<ul>
+<li>constant address <code>&amp;v</code>: address of variable <code>v</code></li>
+<li>constant address <code>&amp;p</code>: address of pointer <code>p</code></li>
+<li>constant address <code>a</code>: address of an array <code>a[]</code> (<code>&amp;</code> is NOT needed for an array)</li>
+<li>constant address <code>f</code>: address of a function <code>f()</code> (<code>&amp;</code> is NOT needed for a function)</li>
+</ul>
+</li>
+<li>
+<p>Memory Content</p>
+<ul>
+<li>variable <code>v</code>: memory content as data</li>
+<li>pointer <code>p</code>: memory content as address</li>
+<li>function <code>f()</code>: memory content as code</li>
+</ul>
+</li>
+</ul>
+<h4 id="assign-a-memory-address-to-a-pointer">Assign a memory address to a pointer.</h4>
+<ul>
+<li>pointer assignment <code>p = memory address</code> ... <code>DA OK</code></li>
+<li>pointer assignment <code>p = data</code> ... <code>DA NG</code></li>
+</ul>
+<h4 id="dereference-a-pointer-to-access-data">Dereference a pointer to access data.</h4>
+<ul>
+<li>dereferencing pointer <code>*p = data</code> ... <code>DA OK</code></li>
+<li>dereferencing pointer <code>*p = address</code> ... <code>DA NG</code></li>
+<li>dereferencing pointer <code>data = *p</code> ... <code>DA OK</code></li>
+</ul>
+<h3 id="examples">Examples</h3>
+<h4 id="1-pointer-to-data">1. Pointer to Data</h4>
+<pre><code>data_type v, *pv;
+pv = &amp;v; // v is a variable, &amp;v is its address
+
+data_type a[5], *pa;
+pa = &amp;a[0] // think logically: a[0] is a variable, &amp;a[0] is its address
+pa = a // use concisely: a is array name and a = &amp;a[0] 
+
+</code></pre>
+
+<ul>
+<li>v: a normal variable</li>
+<li>pv: a pointer to a variable v</li>
+<li>a[]: an array of variables</li>
+<li>a: array name</li>
+<li>pa: a pointer to an array</li>
+</ul>
+<h5 id="address">address</h5>
+<ul>
+<li>
+<p>constant address (assigned by compiler): <code>&amp;v</code>, <code>&amp;pv</code>, <code>a</code>, <code>&amp;a[0]</code>, <code>&amp;a[1]</code>, ... </p>
+</li>
+<li>
+<p>changeable address variable (changeable during runtime): <code>pv</code>, <code>pa</code></p>
+</li>
+</ul>
+<h5 id="data">data</h5>
+<ul>
+<li>direct access: <code>v</code>, <code>a[0]</code>, <code>a[1]</code>, ..., <code>f()</code></li>
+<li>indirect access: <code>*pv</code>, <code>*pa</code>, <code>pa[0]</code>, <code>*(pa+1)</code>, <code>pa[1]</code>, ..., <code>(*pf)()</code></li>
+</ul>
+<h4 id="2-pointer-to-function">2. Pointer to Function</h4>
+<pre><code>data_type fd(), (*pfd)();
+pfd = &amp;fd; // thinking
+pfd = fd; // usage
+
+data_type *fa(), *(*pfa)();
+pfa = &amp;fa;
+pfa = fa;
+</code></pre>
+
+<ul>
+<li>fd(): a function that returns data</li>
+<li>fd: function name</li>
+<li>pfd: a pointer to a funciton fd()</li>
+<li>fa(): a function that returns address</li>
+<li>fa: function name</li>
+<li>pfa: a pointer to a function fa()</li>
+</ul>
+<h5 id="address_1">address</h5>
+<ul>
+<li>constant address: <code>&amp;fd</code>, <code>fd</code>, <code>&amp;fa</code>, <code>fa</code></li>
+<li>changeable address variable: <code>pfd</code>, <code>pfa</code></li>
+<li>address returned by fa(): <code>fa()</code>, <code>(*pfa)()</code></li>
+</ul>
+<h5 id="data_1">data</h5>
+<ul>
+<li>data returned by fd(): <code>fd()</code>, <code>(*pfd)()</code></li>
+</ul></div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js" defer></script>
+        <script src="../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form role="form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="Keyboard Shortcuts Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Keyboard Shortcuts</h4>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

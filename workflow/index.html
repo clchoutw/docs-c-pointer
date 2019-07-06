@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>Workflow - Docs</title>
+        <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+        <script src="../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../js/bootstrap-3.0.3.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <div class="container">
+
+                <!-- Collapsed navigation -->
+                <div class="navbar-header">
+                    <!-- Expander button -->
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="..">Docs</a>
+                </div>
+
+                <!-- Expanded navigation -->
+                <div class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li >
+                                <a href="..">Home</a>
+                            </li>
+                            <li >
+                                <a href="../introduction/">Introduction</a>
+                            </li>
+                            <li >
+                                <a href="../visualization/">Visualization</a>
+                            </li>
+                            <li class="active">
+                                <a href="./">Workflow</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li >
+                                <a rel="next" href="../visualization/">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="disabled">
+                                <a rel="prev" >
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#workflow">Workflow</a></li>
+            <li><a href="#target">Target</a></li>
+            <li><a href="#declaration">Declaration</a></li>
+            <li><a href="#binding">Binding</a></li>
+            <li><a href="#usage">Usage</a></li>
+        <li class="main "><a href="#examples">Examples</a></li>
+            <li><a href="#point-to-variable">Point to Variable</a></li>
+            <li><a href="#point-to-array">Point to Array</a></li>
+            <li><a href="#point-to-pointer">Point to Pointer</a></li>
+            <li><a href="#point-to-function">Point to Function</a></li>
+        <li class="main "><a href="#appendix-a">Appendix A</a></li>
+        <li class="main "><a href="#appendix-b">Appendix B</a></li>
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
+
+<h1 id="workflow">Workflow</h1>
+<p><img alt="workflow" src="../img/workflow.png" /></p>
+<p>Follow the workflow when using a pointer.</p>
+<ol>
+<li>Target - a useful pointer must points to a target</li>
+<li>Declaration - data type must be consistant between a pointer and its target</li>
+<li>Binding - connecting a poniter and a target by assigning the address of a target to a pointer</li>
+<li>Usage - using <code>*p</code> to access a target of a pointer <code>p</code></li>
+</ol>
+<h2 id="target">Target</h2>
+<p>A pointer without a target is useless, so begin with the target in mind. 
+A target of a pointer could be a variable, an array, a function, another pointer, etc.</p>
+<p>Declare a target <code>t</code> which will be accessed by a pointer.</p>
+<pre><code>data_type t; 
+</code></pre>
+
+<h2 id="declaration">Declaration</h2>
+<p>Declare a pointer <code>p</code> where data type of <code>t</code> and <code>*p</code> must be consistent.</p>
+<pre><code>data_type *p; 
+</code></pre>
+
+<h2 id="binding">Binding</h2>
+<p>Connecting a poniter <code>p</code> and a target <code>t</code> by assigning the address of a target <code>&amp;t</code> to <code>p</code>.</p>
+<pre><code>p = &amp;t;
+</code></pre>
+
+<h2 id="usage">Usage</h2>
+<p>Dereferencing pointer <code>*p</code> to access <code>t</code>.</p>
+<h1 id="examples">Examples</h1>
+<h2 id="point-to-variable">Point to Variable</h2>
+<h3 id="point-to-char">Point to Char</h3>
+<p>Use a pointer <code>p</code> to set a char variable <code>v</code> to <code>'A'</code>.</p>
+<h4 id="target_1">Target</h4>
+<p>The target is a char variable <code>v</code>.</p>
+<pre><code>char v; // data_type of v is char.
+</code></pre>
+
+<h4 id="declaration_1">Declaration</h4>
+<pre><code>char *p; // data_type of v and *p is char where v is a variable and p is a pointer.
+</code></pre>
+
+<h4 id="binding_1">Binding</h4>
+<pre><code>p = &amp;v; // `p` points to `v`
+</code></pre>
+
+<h4 id="usage_1">Usage</h4>
+<pre><code>*p = 'A'; // same as v = 'A'
+</code></pre>
+
+<h3 id="put-it-together">Put it together</h3>
+<pre><code>// set v to 'A'
+char v, *p;
+p = &amp;v;
+*p = 'A';
+</code></pre>
+
+<h2 id="point-to-array">Point to Array</h2>
+<h3 id="point-to-an-array-of-integers">Point to an Array of Integers</h3>
+<p>Use a pointer <code>p</code> to access an array a[].</p>
+<h4 id="target_2">Target</h4>
+<p>The target is an array of integers.</p>
+<pre><code>int a[] = {0, 10, 2, 3, 4, 5}; // a is array name, a[0], a[1], ... are integer variables
+</code></pre>
+
+<h4 id="declaration_2">Declaration</h4>
+<pre><code>int *p;
+</code></pre>
+
+<h4 id="binding_2">Binding</h4>
+<pre><code>p = a; // assign array name to a pointer. same as p = &amp;a[0]
+</code></pre>
+
+<h4 id="usage_2">Usage</h4>
+<p>Set a[0] to 10.</p>
+<pre><code>*p = 10; // same as p[0]=10
+</code></pre>
+
+<p>Set a[2] to 32.</p>
+<pre><code>*(p+2) = 32; // same as p[2]=32
+</code></pre>
+
+<h3 id="put-it-together_1">Put it together</h3>
+<pre><code>// set a[0] to 10, and a[2] to 32
+int *p, a[] = {0, 10, 2, 3, 4, 5};
+p = a;
+*p = 10;
+*(p+2) = 32;
+</code></pre>
+
+<h2 id="point-to-pointer">Point to Pointer</h2>
+<h3 id="point-to-a-char-pointer">Point to a Char Pointer</h3>
+<p>Use a pointer <code>pp</code> to set a char variable <code>v</code> to <code>'A'</code>.</p>
+<h4 id="target_3">Target</h4>
+<p>The target is a char variable <code>v</code>.</p>
+<pre><code>char v, *p; // data_type of v and *p is char.
+</code></pre>
+
+<h4 id="declaration_3">Declaration</h4>
+<pre><code>char **pp; // pp is a pointer and data type of **pp is char
+</code></pre>
+
+<h4 id="binding_3">Binding</h4>
+<pre><code>p = &amp;v; //`p` points to `v`
+pp = &amp;p; // `pp` points to `p`
+</code></pre>
+
+<h4 id="usage_3">Usage</h4>
+<pre><code>**pp = 'A'; // same as v = 'A' and *p = `A`
+</code></pre>
+
+<h3 id="put-it-together_2">Put it together</h3>
+<pre><code>// set v to 'A'
+char **pp, *p, v;
+p = &amp;v;
+pp = &amp;p;
+**pp = 'A'; // set v to 'A'
+</code></pre>
+
+<h2 id="point-to-function">Point to Function</h2>
+<h3 id="point-to-a-function-which-returns-an-integer">Point to a Function which Returns an Integer</h3>
+<p>Use a pointer <code>p</code> to call a function <code>f()</code>.</p>
+<h4 id="target_4">Target</h4>
+<p>The target is a function <code>f()</code> which returns an integer.</p>
+<pre><code>int f();
+</code></pre>
+
+<h4 id="declaration_4">Declaration</h4>
+<pre><code>int (*p)(); // p is a function pointer. calling the function `(*p)()` returns an integer.
+</code></pre>
+
+<h4 id="binding_4">Binding</h4>
+<pre><code>p = f; // assign function name to a function pointer, same as p = &amp;f
+</code></pre>
+
+<h4 id="usage_4">Usage</h4>
+<pre><code>(*p)(); // call function f()
+</code></pre>
+
+<h3 id="put-it-together_3">Put it together</h3>
+<pre><code>// call function f()
+int (*p)(), f();
+p = f;
+(*p)();
+</code></pre>
+
+<h1 id="appendix-a">Appendix A</h1>
+<p>Priority of operators in ascending order</p>
+<ul>
+<li><code>()</code> <code>[]</code> <code>.</code> <code>-&gt;</code>  </li>
+<li><code>*</code> <code>&amp;</code> <code>++</code> <code>--</code>  </li>
+<li><code>+</code> <code>-</code>  </li>
+<li><code>=</code> <code>+=</code> <code>-=</code></li>
+</ul>
+<h1 id="appendix-b">Appendix B</h1>
+<p>Function pointer vs function name</p>
+<pre><code>int h(); // h is function name. Calling h() returns an integer.
+int (*h)(); // h is a function pointer. Calling function (*p)() will return an integer.
+int *h(); // h is function name. Calling h() returns an integer pointer
+int *(*h)(); // h is a function pointer. Calling (*h)() returns an integer pointer
+</code></pre></div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js" defer></script>
+        <script src="../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form role="form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="Keyboard Shortcuts Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Keyboard Shortcuts</h4>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
