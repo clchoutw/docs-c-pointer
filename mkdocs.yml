@@ -1,5 +1,5 @@
 site_name: Docs
 
 theme:
-  name: 'readthedocs'
+  name: 'mkdocs'
   
