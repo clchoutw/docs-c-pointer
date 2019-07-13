@@ -8,7 +8,7 @@ comments: false
 published: false
 ---
 
-# C Pointer
+# Yet Another Guide to C Pointers
 
 ## Introduction
 
